@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import SearchBar from "./components/SearchBar";
+import WeatherCard from "./components/WeatherCard";
 
 function App() {
   const [city, setCity] = useState("");
@@ -35,47 +37,12 @@ function App() {
       <div className="card">
         <h1>🌤️ Weather App</h1>
 
-        <div className="search-row">
-          <input
-            type="text"
-            placeholder="Enter city name..."
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && getWeather()}
-          />
-          <button onClick={getWeather}>Search</button>
-        </div>
+        <SearchBar city={city} setCity={setCity} getWeather={getWeather} />
 
         {loading && <p className="loading">Fetching weather...</p>}
         {error && <p className="error">❌ {error}</p>}
 
-        {weather && (
-          <div className="weather-box">
-            <img
-              src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-              alt="icon"
-            />
-            <div className="city-name">{weather.city}, {weather.country}</div>
-            <div className="description">{weather.description}</div>
-            <div className="temp">{weather.temp}°C</div>
-            <div className="feels">Feels like {weather.feels_like}°C</div>
-
-            <div className="details">
-              <div className="detail-item">
-                <span className="detail-label">💧 Humidity</span>
-                <span className="detail-value">{weather.humidity}%</span>
-              </div>
-              <div className="detail-item">
-                <span className="detail-label">🌬️ Wind</span>
-                <span className="detail-value">{weather.wind} m/s</span>
-              </div>
-              <div className="detail-item">
-                <span className="detail-label">☁️ Condition</span>
-                <span className="detail-value">{weather.condition}</span>
-              </div>
-            </div>
-          </div>
-        )}
+        <WeatherCard weather={weather} />
       </div>
     </div>
   );

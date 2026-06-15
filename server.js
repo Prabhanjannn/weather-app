@@ -26,7 +26,7 @@ app.get('/api/weather', async (req, res) => {
       return res.status(404).json({ error: 'City not found' });
     }
 
-    res.json({
+  res.json({
       city: data.name,
       country: data.sys.country,
       temp: Math.round(data.main.temp),
@@ -35,9 +35,9 @@ app.get('/api/weather', async (req, res) => {
       wind: data.wind.speed,
       condition: data.weather[0].main,
       description: data.weather[0].description,
-      icon: data.weather[0].icon
+      icon: data.weather[0].icon,
+      timezone: data.timezone
     });
-
   } catch (err) {
     res.status(500).json({ error: 'Something went wrong' });
   }
