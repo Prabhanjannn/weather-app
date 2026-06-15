@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
+import Forecast from "./components/Forecast";
 
 function App() {
   const [city, setCity] = useState("");
@@ -43,6 +44,9 @@ function App() {
         {error && <p className="error">❌ {error}</p>}
 
         <WeatherCard weather={weather} />
+
+        <WeatherCard weather={weather} />
+        <Forecast forecast={weather?.forecast} />
       </div>
     </div>
   );

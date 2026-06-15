@@ -1,30 +1,21 @@
 function WeatherCard({ weather }) {
     if (!weather) return null;
 
-    const getLocalTime = () => {
-        console.log("timezone value:", weather.timezone);
-        console.log("timezone type:", typeof weather.timezone);
+   const getLocalTime = () => {
+  const timezone = Number(weather.timezone);
+  const utcSeconds = Math.floor(Date.now() / 1000);
+  const localSeconds = utcSeconds + timezone;
+  const d = new Date(localSeconds * 1000);
 
-        const timezone = Number(weather.timezone);
-        console.log("timezone as number:", timezone);
+  const hours = d.getUTCHours();
+  const minutes = d.getUTCMinutes().toString().padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const displayHours = (hours % 12 || 12).toString();
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const day = days[d.getUTCDay()];
 
-        const utcSeconds = Math.floor(Date.now() / 1000);
-        const localSeconds = utcSeconds + timezone;
-        const d = new Date(localSeconds * 1000);
-
-        console.log("date object:", d);
-        console.log("UTC hours:", d.getUTCHours());
-        console.log("UTC day:", d.getUTCDay());
-
-        const hours = d.getUTCHours();
-        const minutes = d.getUTCMinutes().toString().padStart(2, '0');
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        const displayHours = (hours % 12 || 12).toString();
-        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const day = days[d.getUTCDay()];
-
-        return `${day}, ${displayHours}:${minutes} ${ampm}`;
-    };
+  return `${day}, ${displayHours}:${minutes} ${ampm}`;
+};
 
     return (
         <div className="weather-box">

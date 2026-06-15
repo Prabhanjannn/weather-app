@@ -151,3 +151,47 @@ button:hover {
   opacity: 0.85;
   margin-bottom: 12px;
 }
+
+.forecast {
+  margin-top: 24px;
+}
+
+.forecast h3 {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.forecast-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.forecast-day {
+  font-size: 14px;
+  font-weight: bold;
+  width: 100px;
+}
+
+.forecast-condition {
+  font-size: 14px;
+  opacity: 0.85;
+  flex: 1;
+  text-align: center;
+}
+
+.forecast-temp {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.forecast-item img {
+  width: 40px;
+  height: 40px;
+}
