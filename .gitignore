@@ -1,0 +1,4 @@
+node_modules/
+.env
+weather-frontend/node_modules/
+weather-frontend/dist/
