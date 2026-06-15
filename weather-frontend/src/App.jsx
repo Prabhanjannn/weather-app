@@ -15,7 +15,7 @@ function App() {
     setWeather(null);
 
     try {
-      const res = await fetch(`http://localhost:3000/api/weather?city=${encodeURIComponent(city)}`);
+      const res = await fetch(`https://weather-app-backend-elrt.onrender.com/api/weather?city=${encodeURIComponent(city)}`);
       const data = await res.json();
 
       if (data.error) {
